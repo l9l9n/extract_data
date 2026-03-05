@@ -2,7 +2,7 @@ import csv
 
 FILE_PATH = 'events-1.csv'
 
-def load_csv(file_path):
+def load_csv(file_path): # должен возвартить список словарей
     items = []
 
     with open(file_path, newline='', encoding='utf-8') as file:
