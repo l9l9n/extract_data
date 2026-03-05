@@ -1,4 +1,4 @@
-from functools import reduce
+from functools import reduce, partial
 from collections import defaultdict
 
 
@@ -15,3 +15,11 @@ def count_events_user(events):
         user_events[user] += 1
     return dict(user_events)
 
+
+def count_field(events, field):
+    # кол-во событий для каждого значения поля field
+    field_events = defaultdict(int)
+    for event in events:
+        value = event[field]
+        field_events[value] += 1
+    return field_events
