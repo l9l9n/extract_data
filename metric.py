@@ -22,4 +22,7 @@ def count_field(events, field):
     for event in events:
         value = event[field]
         field_events[value] += 1
-    return field_events
+    return dict(field_events)
+
+
+count_events_action = partial(count_field, field='action')
