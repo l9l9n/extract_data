@@ -1,13 +1,13 @@
-def print_report(total, by_user, by_action, sessions, top):
+def print_report(total, user, action, sessions, top):
 
-    print("===== REPORT =====\n")
+    print("======= REPORT =========")
 
     print("Total events:", total)
-    print()
 
+    print()
     print("Users activity:")
 
-    for user, count in by_user.items():
+    for user, count in user.items():
 
         s = sessions.get(user, {"completed": 0, "incomplete": 0})
 
@@ -21,14 +21,12 @@ def print_report(total, by_user, by_action, sessions, top):
         )
 
     print()
-
     print("Actions summary:")
 
-    for action, count in by_action.items():
+    for action, count in action.items():
         print(f"- {action}: {count}")
 
     print()
-
     print("Top users:")
 
     for i, (user, count) in enumerate(top, 1):

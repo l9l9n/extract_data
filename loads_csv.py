@@ -1,6 +1,6 @@
 import csv
 
-FILE_PATH = 'events-1.csv'
+# FILE_PATH = 'events-1.csv'
 
 def load_csv(file_path): # должен возвартить список словарей
     items = []

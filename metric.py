@@ -1,15 +1,15 @@
-from functools import reduce, partial
+from functools import partial
 from collections import defaultdict
 from itertools import groupby
 
 
+
+
 def count_total_events(events):
-    # кол-во событий в списке
-    return reduce(lambda acc, event: acc + 1, events, 0)
+    return len(events)
 
 
 def count_events_user(events):
-    # кол-во событий для каждого пользователя
     user_events = defaultdict(int)
     for event in events:
         user = event['user']
@@ -18,7 +18,6 @@ def count_events_user(events):
 
 
 def count_field(events, field):
-    # кол-во событий для каждого значения
     field_events = defaultdict(int)
     for event in events:
         value = event[field]
@@ -29,7 +28,6 @@ count_events_action = partial(count_field, field='action')
 
 
 def action_user(events):
-    # кол-во событий для каждого действия пользователя
     rusult = {}
     events_sorted = sorted(events, key=lambda e: e['user'])
 
@@ -43,14 +41,12 @@ def action_user(events):
     return rusult
 
 
-def top_users(events):
-    # топ пользователей по событиям
-    return sorted(count_events_user(events).items(), key=lambda x: x[1], reverse=True)
+def top_users(users):
+    return sorted(users.items(), key=lambda x: x[1], reverse=True)
 
 
 
-def analyze_sessions(events):
-    # анализ сессий completed, incomplete
+def analyz_sessions(events):
     sessions = defaultdict(lambda: {"completed": 0, "incomplete": 0})
     active_sessions = defaultdict(int)
 
