@@ -12,7 +12,14 @@ def print_report_rus(total, user, action, sessions, top, unique_action_user, act
     print("Количество уникальных действий у пользователя ->", unique_action_user)
     print()
 
-    print("Пользователь → действия → количество -|", action_per_user)
+    print("Пользователь → действия → количество -|")
+    for user, actions in action_per_user.items():
+        print(user)
+
+        for action, count in actions.items():
+            print("   ", action, "->", count)
+
+    print()
     print()
 
     print("Топ пользователей по активности:")
