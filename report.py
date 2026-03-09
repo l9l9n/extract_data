@@ -16,9 +16,7 @@ def print_report_rus(total, user, action, sessions, top, unique_action_user, act
     print()
 
     print("Топ пользователей по активности:")
-
-    # for i, (user, count) in enumerate(top, 1):
-    #     print(i, user, count)
+    print(top)
 
     print()
     print("Сессии:")
