@@ -23,7 +23,10 @@ def print_report_rus(total, user, action, sessions, top, unique_action_user, act
     print()
 
     print("Топ пользователей по активности:")
-    print(top)
+    i = 1
+    for user, count in top:
+        print(i, user, count)
+        i += 1
 
     print()
     print("Сессии:")
