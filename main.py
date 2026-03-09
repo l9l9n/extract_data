@@ -1,6 +1,6 @@
 from loads_csv import load_csv
-from metric import count_total_events, count_events_user, count_events_action, action_user, top_users, analyz_sessions
-from report import print_report
+from metric import count_total_events, count_events_user, count_events_action, action_user, top_users, analyz_sessions, unique_actions_per_user, actions_per_user
+from report import print_report, print_report_rus
 
 
 
@@ -16,7 +16,14 @@ sessions = analyz_sessions(events)
 
 top = top_users(user)
 
+unique_action_user = unique_actions_per_user(events)
+
+action_per_user = actions_per_user(events)
+
+print_report_rus(total, user, action, sessions, top, unique_action_user, action_per_user)
+
 print_report(total, user, action, sessions, top)
+
 
 
 

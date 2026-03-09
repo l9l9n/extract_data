@@ -68,3 +68,41 @@ def analyz_sessions(events):
         sessions[user]["incomplete"] += count
 
     return dict(sessions)
+
+
+def unique_actions_per_user(events):
+    result = {}
+    for event in events:
+        user = event["user"]
+        action = event["action"]
+        if user not in result:
+            result[user] = set()
+
+        result[user].add(action)
+
+    unique_counts = {}
+
+    for user in result:
+        unique_counts[user] = len(result[user])
+
+    return unique_counts
+
+
+def actions_per_user(events):
+
+    result = {}
+
+    for event in events:
+
+        user = event["user"]
+        action = event["action"]
+
+        if user not in result:
+            result[user] = {}
+
+        if action not in result[user]:
+            result[user][action] = 0
+
+        result[user][action] += 1
+
+    return result
