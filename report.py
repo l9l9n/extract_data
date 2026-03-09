@@ -13,32 +13,30 @@ def print_report_rus(total, user, action, sessions, top, unique_action_user, act
     print()
 
     print("Пользователь → действия → количество -|")
-    for user, actions in action_per_user.items():
-        print(user)
+    for user_n, actions in action_per_user.items():
+        print(user_n)
 
-        for action, count in actions.items():
-            print("   ", action, "->", count)
+        for action_u, count in actions.items():
+            print("   ", action_u, "->", count)
 
-    print()
     print()
 
     print("Топ пользователей по активности:")
     i = 1
-    for user, count in top:
-        print(i, user, count)
+    for user_t, count in top:
+        print(i, user_t, count)
         i += 1
 
     print()
     print("Сессии:")
 
-    for user, count in user.items():
-
-        s = sessions.get(user, {"completed": 0, "incomplete": 0})
-
-        completed = s["completed"]
-        incomplete = s["incomplete"]
-
-        print(user, f"{completed} completed, {incomplete} incomplete")
+    for username in user.keys():
+        stats = sessions.get(username, {"completed": 0, "incomplete": 0})
+        
+        completed = stats["completed"]
+        incomplete = stats["incomplete"]
+        
+        print(f"{username}: {completed} completed, {incomplete} incomplete")
 
     print()
 
@@ -53,15 +51,15 @@ def print_report(total, user, action, sessions, top):
     print()
     print("Users activity:")
 
-    for user, count in user.items():
+    for user_s, count in user.items():
 
-        s = sessions.get(user, {"completed": 0, "incomplete": 0})
+        s = sessions.get(user_s, {"completed": 0, "incomplete": 0})
 
         completed = s["completed"]
         incomplete = s["incomplete"]
 
         print(
-            f"- {user}: {count} events "
+            f"- {user_s}: {count} events "
             f"({completed + incomplete} sessions: "
             f"{completed} completed, {incomplete} incomplete)"
         )
